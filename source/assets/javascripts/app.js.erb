@@ -1,0 +1,19 @@
+<% require_asset 'vendor/_jquery-2.x.js' %>
+<% require_asset 'vendor/_jquery.slicknav.min.js' %>
+<% require_asset 'vendor/_jquery.fancybox.js' %>
+<% require_asset 'ratings.js' %>
+
+$(document).ready(function() {
+  $("a").click(function() {
+    link_host = this.href.split("/")[2];
+    document_host = document.location.href.split("/")[2];
+
+    if (link_host != document_host) {
+      window.open(this.href);
+      return false;
+    }
+  });
+  $('#news_flash').addClass('animated fadeInUp');
+  $('#menu').slicknav();
+});
+

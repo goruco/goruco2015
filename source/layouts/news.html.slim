@@ -1,0 +1,14 @@
+- wrap_layout :layout do
+  section.breadcrumbs
+    ul
+      li
+        a href="/news"
+          span.icon-chevron-left
+          ' News
+  section.post
+    article
+      h1 = current_page.title
+      p.meta
+        = "Posted #{current_page.date.strftime("%B %d %Y")} by #{current_page.data.author}"
+      = yield
+

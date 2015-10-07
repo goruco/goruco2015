@@ -1,0 +1,19 @@
+input:focus,
+select:focus,
+textarea:focus,
+button:focus
+  outline: none
+
+.ui-form-input-on-dark
+  padding: 0 $space*3
+  height: $ui-height
+  line-height: $ui-height
+  border: 0
+  @include border-radius($ui-border-radius)
+
+  &:hover,
+  &:focus
+    border-color: $color-white
+
+  &.email
+    width: 22rem

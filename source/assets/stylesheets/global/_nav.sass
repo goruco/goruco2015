@@ -1,0 +1,37 @@
+.g-nav
+  width: 100%
+  background-color: #111
+  text-align: center
+  z-index: 2000
+
+  &.state-fixed
+    .logo
+      visibility: visible
+      opacity: 1
+      width: 6rem
+
+  .logo
+    font-size: 2rem
+    visibility: hidden
+    opacity: 0
+    width: 0
+    @include transition(all 0.4s)
+
+  li
+    display: inline-block
+    text-transform: capitalize
+
+  a
+    color: #888
+    padding: $space*1.5
+    display: block
+
+    @media #{$mq-sm}
+      padding: $space*3 $space*2
+
+    &.active
+      color: $color-white
+
+    &:hover
+      color: $color-white
+      text-decoration: none
