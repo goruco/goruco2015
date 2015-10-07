@@ -1,0 +1,28 @@
+.mod-section
+  @include clearfix()
+  padding-bottom: $space*8
+  padding-top: $space*4
+  border-bottom: 2px solid #444
+
+  &:last-of-type
+    border-bottom: 0
+
+.mod-section-light
+  @extend .mod-section
+  background-color: #333
+  border-bottom: 0
+
+.mod-organizer
+  margin-bottom: $space
+
+  a 
+    display: block
+
+.mod-organizer-info
+  display: inline-block
+  vertical-align: middle
+  padding-left: $space
+
+  @media #{$mq-sm}
+    display: block
+    padding-left: 0

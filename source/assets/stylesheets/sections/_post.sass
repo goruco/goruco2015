@@ -1,0 +1,38 @@
+section.post
+  padding-bottom: 60px
+  p.meta
+    color: $gray
+    font-size: 14px
+    margin: 0 30px
+  h4
+    font-size: 17px
+
+    font-weight: 600
+
+  blockquote
+    font-style: italic
+
+section.speaker_detail
+  header
+    img
+      +border-radius(400px)
+      float: left
+      margin-right: 20px
+    h2
+      padding-top: 10px
+      margin: 0
+    a
+      margin-right: 20px
+  .iframe-video-wrapper
+    position: relative
+    padding-bottom: 56.25% /* 16:9 YouTube */
+    padding-top: 25px
+    height: 0
+    &.vimeo
+      padding-bottom: 53.25% /* 16:9 Vimeo */
+    iframe
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%

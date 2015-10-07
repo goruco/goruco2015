@@ -1,0 +1,69 @@
+@import "neat-helpers"
+
+$space: 0.8rem
+$l-gutter: $space*4
+$pg-home-hero-padding: $space*22
+$pg-home-hero-sm-padding: $space*12
+$pg-home-news-left-width: 20%
+$pg-home-schedule-time-width: 13rem
+
+$l-max-width: 100rem
+
+$g-header-height: 6.4rem
+$g-header-logo-width: 15rem
+
+$color-white: #fff
+$color-type: $color-white
+$color-type-on-light: #222
+$color-bg: #1f1f1f
+$color-red: #cc2a41
+
+$color-accent: $color-red
+
+$border-style-thick: 0.2rem solid
+$border-style: 0.1rem solid
+
+$ui-height: $space*6.25
+$ui-height-small: $space*5
+$ui-border-radius: 0.4rem
+
+$background: #f2f2f2
+$black: #444444
+$red: #cc2a41
+$gray: #aeb3b8
+$purple: #424254
+$lightpurple: #c4cad3
+
+$link: #64908a
+$line: #d7d7d7
+
+$type-small: 1.5rem
+$type-med: 2.4rem
+
+$rating-green: #38ae6f
+$rating-amber: #f7941d
+$rating-red: #e43e3e
+
+$mq-sm-width: 600px
+$mq-med-width: 825px
+
+$mq-text-mob: "only screen and (min-width:"
+$mq-text-close: ")"
+
+$mq-sm: $mq-text-mob + $mq-sm-width + $mq-text-close
+$mq-med: $mq-text-mob + $mq-med-width + $mq-text-close
+
+// $mq-sm: new-breakpoint(min-width $mq-sm-width 1)
+// $mq-med: new-breakpoint(min-width $mq-med-width 1)
+
+.clearfix
+  clear: both
+  display: block
+  overflow: hidden
+
+@mixin make-transition
+  @include transition (all 0.3s ease-in-out)
+
+@mixin border-radius($rad)
+  @include border-top-radius($rad)
+  @include border-bottom-radius($rad)

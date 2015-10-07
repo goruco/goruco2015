@@ -1,0 +1,48 @@
+$pf: '.m-modal'
+
+#{$pf}
+  position: fixed
+  z-index: 10000
+  display: none
+  left: 0
+  top: 0
+  width: 100%
+  height: 100%
+  padding: 6rem
+  background-color: rgba(0, 0, 0, 0.5)
+
+  &.active
+    display: block
+
+#{$pf}-content
+  padding: 4rem
+  padding-top: 2rem
+  overflow: scroll
+  text-align: center
+  background-color: $color-white
+  max-height: 100%
+
+  a
+    margin-bottom: 2rem
+    display: block
+
+  p 
+    text-align: left
+
+  img
+    max-height: 100% !important
+
+  @media #{$mq-sm} 
+    width: 50rem
+    height: 55rem
+    position: absolute
+    left: 50%
+    top: 50%
+    margin-left: -25rem
+    margin-top: -25rem
+
+
+#{$pf}-img-wrap
+  padding-bottom: 2rem
+  height: 20rem
+

@@ -1,0 +1,17 @@
+doctype html
+/ = partial 'prefix'
+html.nojs
+  | <!--<![endif]-->
+  head
+    = partial 'head'
+  body.landing-page
+    = partial 'nav'
+    == yield
+    .clearfix
+
+    = javascript_include_tag 'app'
+    = javascript_include_tag 'truncate'
+    = javascript_include_tag 'scroll'
+    = javascript_include_tag 'modal'
+    = partial 'google_analytics'
+    / = partial 'partials/_disqus'

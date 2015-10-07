@@ -1,0 +1,12 @@
+- wrap_layout :layout do
+  section.breadcrumbs
+    ul
+      li
+        a href="#"
+          span.icon-chevron-left
+          ' Category Title
+  section
+    h1 = current_page.title
+    - if !current_page.data.brief.nil?
+      p.intro = current_page.data.brief
+    = yield

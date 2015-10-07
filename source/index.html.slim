@@ -1,0 +1,171 @@
+---
+layout: 'home'
+title: 'GORUCO'
+---
+
+- speaker_years = blog('speakers').articles.group_by { |article| article.data.year }
+- sponsor_years = blog('sponsors').articles.group_by { |article| article.data.year }
+- schedule = blog('schedule').articles.group_by { |article| article.data.year }
+- home_nav = ['news', 'speakers', 'schedule', 'location', 'sponsors', 'past talks', 'organizers', 'updates']
+
+div.pg-home-hero-wrap id='hero'
+  div.container
+    div.pg-home-hero
+      header.s3
+        h1.s0
+          span GORUCO
+          span.type-accent 2015
+
+        h2.type-weight-normal June 20th, New York, NY
+
+      p.type-secondary.s4 GORUCO is a 1-day conference for highly motivated programmers.
+
+      a.ui-btn-round href="https://ti.to/goruco/2015" Register Now
+
+div.g-nav-wrap
+  div.js-nav
+    nav.g-nav
+      ul.container.type-small
+        li class='logo'
+          a.icon-logo href="#hero"
+
+        - for nav in home_nav
+          li
+            a.js-nav-link href="##{nav.downcase.tr(" ", "_")}"
+              = nav
+
+div.container
+  section.mod-section.news.s4-pad-top.pos-clearfix.js-home-section id='news'
+    - top_article = blog('news').articles.first
+    div.pg-home-news-left
+      h1.s0 News
+      a href="/news"
+        ' Read More
+    div.pg-home-news-right
+      h3
+        a href="/news"
+          = top_article.data.title
+      div.type-secondary.type-truncate = top_article.body
+  a name="speakers"
+
+  section.past-speakers.mod-section.js-home-section id='speakers'
+    h1 Speakers
+    div
+      ul.l-tile-wrap
+        - speaker_years[2015].sort_by {|a| a.data.order || -1 }.each do |article|
+          li.l-tile-3
+            div.l-tile-content
+              a href="#{article.url}"
+                img.pg-home-speaker-img src=article.data.image alt=article.data.title
+              a href="#{article.url}"
+                h3 = article.data.title
+              - if article.data.location.present?
+                i = article.data.location
+              - if article.data.twitter.present?
+                a.pg-home-speaker-link href="http://twitter.com/#{article.data.twitter}" = "@#{article.data.twitter}"
+              - if article.data.website.present?
+                a.pg-home-speaker-link href=article.data.website = article.data.website
+              p.type-secondary.type-small.pg-home-speaker-bio.js-truncate data-truncate="400" = article.data.bio
+
+  section.schedule.mod-section.js-home-section id='schedule'
+    h1 Tentative Schedule
+    div.pg-home-schedule-wrap
+      ul
+        - schedule[2015].sort_by {|a| a.data.order || -1}.each do |talk|
+          li.pg-home-schedule-item
+            div.pg-home-schedule-time = talk.data.time
+            div.pg-home-schedule-info
+              h3.no-mar-top
+                span = talk.data.title
+                - if talk.data.author
+                  span -
+                  span = talk.data.author
+              - if talk.data.description
+                p.type-secondary.js-truncate data-truncate="340" = talk.data.description
+
+  section.location.mod-section.js-home-section id='location'
+    h1 Location
+    div
+      ul#marker-list
+        li#conference
+          h3 Conference
+          p The Altman Building, 135 West 18th Street
+        li#pre-party
+          h3 Pre-Party
+          p Stollway Event Space, 250 West 39th Street
+        li#after-party
+          h3 After-Party Boat Cruise
+          p Pier 40 at 353 West Street
+    div#map-canvas
+
+div.color-bg-white.on-light
+  div.container
+    section.mod-section.sponsor.js-home-section id='sponsors'
+      h1 Sponsors
+      ul.pos-clearfix.pg-home-sponsors
+        - data.sponsors_2015.sponsors.each do |sponsor|
+          li.js-modal-trigger class=sponsor.type
+            img src=sponsor.image alt=sponsor.title onerror="this.style.display='none'"
+
+            div.js-modal.js-modal-close.m-modal
+              div.js-modal-content.m-modal-content
+                div.m-modal-img-wrap
+                  img src=sponsor.image alt=sponsor.title onerror="this.style.display='none'"
+                a href="http://#{sponsor.url}"
+                  = sponsor.url
+                p.type-small
+                  = sponsor.blurb
+
+          
+      h2 Become A Sponsor
+      p
+        | Sponsoring GORUCO is a great way to connect with the Ruby community and show your support.
+        | We have openings for sponsorship of this year's
+        | conference at all levels.  Get in touch with us, we'd love to speak with you!
+        a href="mailto:sponsors@goruco.com" sponsors@goruco.com
+
+div.container
+  section.past-speakers.mod-section.js-home-section id='past_talks'
+    h1 2014 Past Talks
+    .talks-sidebar
+      ul
+        - speaker_years[2014].each do |article|
+          li
+            p
+              a href=article.url
+                = article.data.meta
+              span.s1-left = article.data.title
+      a.pos-right href="/speakers"
+        ' See All Past Talks
+        i.icon-chevron-right
+
+    .talks-panel
+      - article = speaker_years[2014].first
+
+  section.organizers.mod-section.js-home-section id='organizers'
+    h1 Organizers
+    ul
+      - blog('organizers').articles.each do |article|
+        li.block.l4.mod-organizer
+          - if article.data.image.present?
+            img src=article.data.image alt=article.data.title onerror="this.style.display='none'" height=100 width=100
+          div.mod-organizer-info
+            h4= "#{article.data.title}"
+            - if article.data.twitter.present?
+              a href="http://twitter.com/#{article.data.twitter}"
+                = "@#{article.data.twitter}"
+            - if article.data.link.present?
+              a href="http://#{article.data.link}"
+                = "#{article.data.link}"
+
+  section.updates.mod-section.js-home-section id="updates"
+    h1 Updates
+    form.signup-form action="//goruco.us2.list-manage.com/subscribe/post?u=00945f50a161df14372a84a34&amp;id=cdf39163af" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate="novalidate"
+      h3.s2.pg-home-get-updates-header Get Updates
+      input.signup.required.email.s3.ui-form-input-on-dark.pg-home-input type="email" value="" name="EMAIL" id="mce-EMAIL" placeholder="Email"
+      input.signup.pg-home-submit.ui-btn type="submit" value="Update Me" name="subscribe" id="mc-embedded-subscribe"
+      div style="position: absolute; left: -5000px;"
+        input type="text" name="b_00945f50a161df14372a84a34_cdf39163af" tabindex="-1" value=""
+
+  = partial 'footer'
+  = partial 'map'

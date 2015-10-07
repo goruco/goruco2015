@@ -1,0 +1,18 @@
+---
+title: 'GORUCO Speakers'
+meta: Index of the speakers at GORUCO.
+---
+
+section.list_index
+  h1 Past Talks
+
+  - speaker_years = blog('speakers').articles.group_by { |article| article.data.year }
+  - speaker_years.each do |year, articles|
+    h3= year
+    ul
+      - articles.each do |article|
+        li
+          p
+            a href=article.url
+              = article.data.meta
+            span.s1-left = article.data.title
