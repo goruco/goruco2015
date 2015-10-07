@@ -1,0 +1,1 @@
+var ratings={};ratings.fetchRating=function(i){$.getJSON(i,{},function(i){$("li.icon-emoji-happy").text(i.ratings.happy),$("li.icon-emoji-neutral").text(i.ratings.meh),$("li.icon-emoji-sad").text(i.ratings.unhappy)})};

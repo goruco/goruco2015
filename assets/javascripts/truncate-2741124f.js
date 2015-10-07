@@ -1,0 +1,1 @@
+$(function(){$(".js-truncate").each(function(){var t=$(this),n=t.html(),a=t.data("truncate");if(t.text().length>a){var i=$.trim(n).substring(0,a).split(" ").slice(0,-1).join(" ")+"... <a class='type-truncate-link'>Read More</a>";t.html(i),t.find("a").on("click",function(){t.html(n)})}})});
